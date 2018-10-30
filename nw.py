@@ -1,4 +1,5 @@
 from sys import argv
+import string
 
 # Max int = 9,223,372,036,854,775,807 
 number_words = {
@@ -56,9 +57,10 @@ print("Enter 'exit' to quit")
 while (True):
     input_str = input("Words:")
 
-    if input_str in ['quit', 'exit']
+    if input_str in ['quit', 'exit']:
+        quit()
 
-    input_list = input_str.replace('-',' ').lower().split()
+    input_list = input_str.replace('-',' ').replace(',','').lower().split()
     input_list = [x for x in input_list if x in number_words.keys()]
 
     if debug:
