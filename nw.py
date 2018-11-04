@@ -43,6 +43,7 @@ thousand_powers = [x for x in number_words.keys() if number_words[x] >= 1000]
 
 commas = False
 debug = False
+sign = False
 
 # Set flags according to command line arguments
 for a in argv[1:]:
@@ -50,18 +51,26 @@ for a in argv[1:]:
         for c in a[1:]:
             if c == 'c':
                 commas = True
-            if c == 'd':
+            elif c == 'd':
                 debug = True
+            elif c == 's':
+                sign = True
 
 print("Enter 'exit' to quit")
 
 while (True):
+    negative = False
+
     input_str = input("Words:")
 
     if input_str in ['quit', 'exit']:
         quit()
 
     input_list = input_str.replace('-',' ').replace(',','').lower().split()
+
+    if input_list[0] == "negative":
+        negative = True
+
     input_list = [x for x in input_list if x in number_words.keys()]
 
     if debug:
@@ -87,7 +96,13 @@ while (True):
             # End of words
             total += block
 
+    output = total
     if commas:
-        print("{:,}".format(total))
-    else:
-        print(total)
+        output = "{:,}".format(total)
+
+    if negative:
+        output = '-' + str(output)
+    elif sign:
+        output = '+' + str(output)
+        
+    print(output)
