@@ -3,6 +3,7 @@ import string
 
 # Max int = 9,223,372,036,854,775,807 
 number_words = {
+    "zero":         0,
     "one":          1,
     "two":          2,
     "three":        3,
