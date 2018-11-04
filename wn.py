@@ -27,7 +27,7 @@ while (True):
     output = []
     for c in reversed(input_str): # reversed() iterates through the string backward without creating a copy of the string
         digit = int(c)
-        if b == 0 and digit != 0:
+        if b == 0 and (digit != 0 or len(input_str) == 1):
             output.append(ones_words[digit])
         elif b == 1 and digit != 0:
             if digit != 1:
